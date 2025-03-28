@@ -113,7 +113,8 @@
 
         .carousel-slide img {
             width: 100%;
-            height: auto;
+            height: 450px;
+            object-fit: cover;
             display: block;
         }
 
@@ -416,10 +417,6 @@
         });
     });
     
-    // Auto-advance slides every 5 seconds
-    setInterval(() => {
-        showSlide(slideIndex + 1);
-    }, 5000);
 });
 </script>
 </body>
