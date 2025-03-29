@@ -21,55 +21,54 @@
         }
         
         .hero {
-    position: relative;
-    margin-bottom: 40px;
-    width: 100%;
-    padding: 0;
-    overflow: hidden;
-}
+            position: relative;
+            margin-bottom: 40px;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
         
-.hero img {
-    width: 100%;
-    height: auto;
-    max-height: 600px;
-    display: block;
-    object-fit: cover;
-}
+        .hero img {
+            width: 100%;
+            height: 600px;
+            display: block;
+            object-fit: cover;
+        }
         
-.hero-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: #ff6600;
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 48px;
-    font-weight: bold;
-    background-color: rgba(80, 80, 80, 0.7); /* Increased opacity */
-    padding: 30px 20px;
-    text-align: left;
-}
+        .hero-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: #ff6600;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 48px;
+            font-weight: bold;
+            background-color: rgba(80, 80, 80, 0.7);
+            padding: 30px 20px;
+            text-align: left;
+        }
 
         .hero-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: inline-block;
-    background-color: #fa8d45fd;
-    color: #333;
-    padding: 12px 24px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    z-index: 10; /* Ensures the button stays on top */
-}
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: inline-block;
+            background-color: #fa8d45fd;
+            color: #333;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            z-index: 10; /* Ensures the button stays on top */
+        }
 
-.hero-button:hover {
-    background-color: #333;
-    color: white;
-}
+        .hero-button:hover {
+            background-color: #333;
+            color: white;
+        }
         
         section {
             margin-bottom: 40px;
@@ -150,6 +149,8 @@
             padding: 15px;
             text-align: center;
             font-size: 18px;
+            overflow-y: auto;
+            max-height: 40%;
         }
 
         .carousel-prev, .carousel-next {
@@ -220,12 +221,8 @@
             color: white;
         }
         
-        .free-range-image {
-            margin: 30px auto;
-            display: block;
-            width: 100%;
-            max-width: 500px;
-            height: auto;
+        .content-section {
+            margin-bottom: 40px;
         }
         
         p {
@@ -240,76 +237,100 @@
             padding-right: 40px;
         }
         
+        .center-image {
+            text-align: center; 
+            margin: 30px auto;
+        }
+        
+        .center-image img {
+            width: 100%; 
+            max-width: 800px; 
+            height: 450px; 
+            object-fit: cover;
+        }
+        
         @media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .hero img {
-        height: auto; /* Let image maintain its aspect ratio */
-        max-height: 500px; /* But limit how tall it can get */
-    }
-    
-    .hero-text {
-        font-size: 24px;
-        padding: 15px 10px;
-        background-color: rgba(80, 80, 80, 0.8);
-    }
-    
-    .hero-button {
-        top: 10px;
-        right: 10px;
-        font-size: 16px;
-        padding: 8px 16px;
-    }
-}
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero img {
+                height: 800px; /* Fixed height for mobile */
+                object-fit: cover;
+            }
+            
+            .hero-text {
+                font-size: 24px;
+                padding: 15px 10px;
+                background-color: rgba(80, 80, 80, 0.8);
+            }
+            
+            .hero-button {
+                top: 10px;
+                right: 10px;
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+            
+            iframe {
+                height: 400px !important;
+            }
+            
+            .carousel-slide img {
+                height: 450px;
+            }
+        }
 
-@media (max-width: 480px) {
-    .hero-text {
-        font-size: 20px;
-        padding: 10px;
-        background-color: rgba(80, 80, 80, 0.9); /* Even more opacity for smallest screens */
-    }
-    
-    .hero-button {
-        font-size: 14px;
-        padding: 6px 12px;
-        top: 10px;
-        right: 10px;
-    }
-    
-    .hero img {
-        max-height: 400px; /* Slightly smaller max height for very small screens */
-    }
-    
-    /* Make other content more compact on very small screens */
-    section p, section h2, section h3 {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    
-    p {
-        font-size: 18px; /* Smaller font size for paragraphs on mobile */
-    }
-    
-    .grid-item img {
-        height: 300px; /* Smaller grid images on mobile */
-    }
-    
-    /* Make carousel and video more compact */
-    .carousel-slide img, 
-    iframe {
-        height: 300px !important;
-    }
-}
+        @media (max-width: 480px) {
+            .hero-text {
+                font-size: 20px;
+                padding: 10px;
+                background-color: rgba(80, 80, 80, 0.9);
+            }
+            
+            .hero-button {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .hero img {
+                height: 600px; /* Still tall for small screens */
+            }
+            
+            section p, section h2, section h3 {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            p {
+                font-size: 18px;
+            }
+            
+            .grid-item img {
+                height: 300px;
+            }
+            
+            .carousel-slide img, 
+            iframe {
+                height: 300px !important;
+            }
+            
+            .center-image img {
+                height: 300px;
+            }
+            
+            .carousel-text {
+                font-size: 14px;
+                max-height: 50%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="hero">
-        <!-- REPLACE WITH ACTUAL CAGED HENS IMAGE URL -->
         <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/website_3(1).jpg" alt="Caged hen in poor conditions">
         <div class="hero-text">Lejárt az idő: váltsuk le az elavult ketreces tartást!</div>
-        <a href="petition.html" class="hero-button" id="hero-sign-button">Sign the petition</a>
+        <a href="https://www.change.org/p/lej%C3%A1rt-az-id%C5%91-v%C3%A1ltsuk-le-az-elavult-ketreces-tart%C3%A1st" class="hero-button" id="hero-sign-button" target="_blank">Sign the petition</a>
     </div>
     
     <section>
@@ -320,7 +341,7 @@
         <p>A válasz egyszerű: amíg nem tudunk róla, nem tudunk tenni ellene. Győzzük le a tudatlanságot és juttassuk el ezt a felvételt az ország minden szegletébe, valamint nyilvánítsuk ki aláírásunkkal közösen: nem támogatjuk a tyúkok ketrecbe zárását!</p>
         
         <div class="cta">
-            <a href="petition.html" class="button" id="sign-button">Sign the petition</a>
+            <a href="https://www.change.org/p/lej%C3%A1rt-az-id%C5%91-v%C3%A1ltsuk-le-az-elavult-ketreces-tart%C3%A1st" class="button" id="sign-button" target="_blank">Sign the petition</a>
         </div>
     </section>
     
@@ -377,8 +398,7 @@
         
         <p>By signing, you express your support for progress, and your opinion will also be considered in our negotiations with companies!</p>
         
-        <section>
-            
+        <div class="content-section">
             <div class="carousel-container">
                 <div class="carousel-slide">
                     <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/website%20picture%20barnegg.jpg" alt="Barn Egg Chicken">
@@ -404,51 +424,29 @@
                     <span class="dot" data-index="2"></span>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section>
+        <div class="content-section">
             <p>The first step is to spread the truth about caged farming to everyone. If we do this, even the largest companies will stand with us and together we can improve the lives of hens. Many have already committed to selling and using only cage-free eggs by the end of this year. In several countries, it has been proven that as they gradually switch to deep-litter and free-range eggs, the number of hens kept in cages decreases.</p>
             
             <p>They need you too! Join our wonderful community with your signature, that supports hens and share this message with your family and friends!</p>
 
             <p>Together, we will overcome lack of awareness and free the hens!</p>
-        </section>
+        </div>
 
         <div class="cta">
             <h2>Sign the petition!</h2>
         </div>
         
-        <!-- Center-aligned image with grid-like dimensions -->
-        <div style="text-align: center; margin: 30px auto;">
+        <div class="center-image">
             <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/website_magda_the_hen.jpg" 
-                 alt="Free-range hen in a meadow" 
-                 style="width: 100%; max-width: 800px; height: 450px; object-fit: cover;">
+                 alt="Free-range hen in a meadow">
         </div>
         
         <div class="cta">
-            <a href="petition.html" class="button" id="sign-button-bottom">Sign the petition</a>
+            <a href="https://www.change.org/p/lej%C3%A1rt-az-id%C5%91-v%C3%A1ltsuk-le-az-elavult-ketreces-tart%C3%A1st" class="button" id="sign-button-bottom" target="_blank">Sign the petition</a>
         </div>
-
     </section>
-
-    <script>
-        // This script handles button clicks
-        document.addEventListener('DOMContentLoaded', function() {
-            const signButtons = document.querySelectorAll('#sign-button, #sign-button-bottom, #hero-sign-button');
-            
-            signButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Open the third-party website in a new tab
-                    window.open('https://www.change.org/p/lej%C3%A1rt-az-id%C5%91-v%C3%A1ltsuk-le-az-elavult-ketreces-tart%C3%A1st', '_blank');
-                    
-                    // Navigate to the local petition page
-                    window.location.href = 'petition.html';
-                });
-            });
-        });
-    </script>
 
     <script>
         // This script handles carousel
@@ -459,55 +457,54 @@
             const prevButton = document.querySelector('.carousel-prev');
             const nextButton = document.querySelector('.carousel-next');
     
-        // Set first slide as active
+            // Set first slide as active
             slides[0].classList.add('active');
     
-        // Function to show a specific slide
+            // Function to show a specific slide
             function showSlide(n) {
-        // Remove active class from all slides
-            slides.forEach(slide => {
-            slide.classList.remove('active');
-        });
-        
-        // Remove active class from all dots
+                // Remove active class from all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Remove active class from all dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Set new slide index
+                slideIndex = n;
+                
+                // Handle index out of bounds
+                if (slideIndex >= slides.length) {
+                    slideIndex = 0;
+                }
+                if (slideIndex < 0) {
+                    slideIndex = slides.length - 1;
+                }
+                
+                // Set active class to current slide and dot
+                slides[slideIndex].classList.add('active');
+                dots[slideIndex].classList.add('active');
+            }
+            
+            // Event listeners for prev/next buttons
+            prevButton.addEventListener('click', () => {
+                showSlide(slideIndex - 1);
+            });
+            
+            nextButton.addEventListener('click', () => {
+                showSlide(slideIndex + 1);
+            });
+            
+            // Event listeners for dots
             dots.forEach(dot => {
-            dot.classList.remove('active');
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    showSlide(index);
+                });
+            });
         });
-        
-        // Set new slide index
-            slideIndex = n;
-        
-        // Handle index out of bounds
-            if (slideIndex >= slides.length) {
-            slideIndex = 0;
-        }
-            if (slideIndex < 0) {
-            slideIndex = slides.length - 1;
-        }
-        
-        // Set active class to current slide and dot
-        slides[slideIndex].classList.add('active');
-        dots[slideIndex].classList.add('active');
-    }
-    
-    // Event listeners for prev/next buttons
-    prevButton.addEventListener('click', () => {
-        showSlide(slideIndex - 1);
-    });
-    
-    nextButton.addEventListener('click', () => {
-        showSlide(slideIndex + 1);
-    });
-    
-    // Event listeners for dots
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const index = parseInt(dot.getAttribute('data-index'));
-            showSlide(index);
-        });
-    });
-    
-});
-</script>
+    </script>
 </body>
 </html>
