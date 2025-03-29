@@ -21,37 +21,34 @@
         }
         
         .hero {
-            position: relative;
-            margin-bottom: 40px;
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            padding: 0;
-            overflow: hidden;
-            /* Remove the max-height property from here */
-        }
+    position: relative;
+    margin-bottom: 40px;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+}
         
-        .hero img {
-            width: 100%;
-            display: block;
-            object-position: center top;
-            /* Add a fixed height for desktop */
-            height: 600px; /* This ensures the image has a good height on desktop */
-            object-fit: cover;
-        }
+.hero img {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    display: block;
+    object-fit: cover;
+}
         
-        .hero-text {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            color: #ff6600;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-size: 48px;
-            font-weight: bold;
-            background-color: rgba(80, 80, 80, 0.35);
-            padding: 30px 20px;
-            text-align: left;
-        }
+.hero-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #ff6600;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 48px;
+    font-weight: bold;
+    background-color: rgba(80, 80, 80, 0.7); /* Increased opacity */
+    padding: 30px 20px;
+    text-align: left;
+}
 
         .hero-button {
     position: absolute;
@@ -247,26 +244,23 @@
     .grid {
         grid-template-columns: 1fr;
     }
-
+    
     .hero img {
-        height: 800px; /* Explicitly set the height for the IMAGE, not just the container */
-        object-fit: cover;
+        height: auto; /* Let image maintain its aspect ratio */
+        max-height: 500px; /* But limit how tall it can get */
     }
     
     .hero-text {
-        font-size: 24px; /* Reduced from 28px */
+        font-size: 24px;
         padding: 15px 10px;
-        background-color: rgba(80, 80, 80, 0.7); /* Increased opacity */
-        position: absolute;
-        bottom: 0;
-        width: 100%;
+        background-color: rgba(80, 80, 80, 0.8);
     }
     
     .hero-button {
         top: 10px;
         right: 10px;
-        font-size: 16px; /* Smaller font */
-        padding: 8px 16px; /* Smaller padding */
+        font-size: 16px;
+        padding: 8px 16px;
     }
 }
 
@@ -274,15 +268,38 @@
     .hero-text {
         font-size: 20px;
         padding: 10px;
+        background-color: rgba(80, 80, 80, 0.9); /* Even more opacity for smallest screens */
     }
     
     .hero-button {
         font-size: 14px;
         padding: 6px 12px;
+        top: 10px;
+        right: 10px;
     }
-
+    
     .hero img {
-        height: 700px; /* Smaller height for very small screens */
+        max-height: 400px; /* Slightly smaller max height for very small screens */
+    }
+    
+    /* Make other content more compact on very small screens */
+    section p, section h2, section h3 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    p {
+        font-size: 18px; /* Smaller font size for paragraphs on mobile */
+    }
+    
+    .grid-item img {
+        height: 300px; /* Smaller grid images on mobile */
+    }
+    
+    /* Make carousel and video more compact */
+    .carousel-slide img, 
+    iframe {
+        height: 300px !important;
     }
 }
     </style>
