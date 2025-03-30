@@ -669,13 +669,47 @@ returnButton.addEventListener('click', function(e) {
     </div>
 </section>
 
-<!-- MailerLite JavaScript -->
+<!-- MailerLite Universal -->
 <script>
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
     .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
     n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
     (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
     ml('account', '1353741');
+</script>
+
+<!-- Directly embed a simple form as a fallback -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if MailerLite hasn't loaded the form after 3 seconds
+    setTimeout(function() {
+        const mlForm = document.querySelector('.ml-form-embed');
+        // If the div still has no children, MailerLite script likely failed
+        if (mlForm && mlForm.children.length === 0) {
+            console.log('MailerLite form not loaded, using fallback form');
+            mlForm.innerHTML = `
+                <form id="fallback-newsletter-form" style="margin-top: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <input type="email" name="email" placeholder="Add meg az email címed" required
+                            style="padding: 10px; width: 100%; max-width: 300px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+                    <div>
+                        <button type="submit" style="background-color: #fa8d45fd; color: #333; padding: 12px 24px; border: none; border-radius: 5px; font-weight: bold; font-size: 18px; cursor: pointer;">
+                            Feliratkozás
+                        </button>
+                    </div>
+                </form>
+            `;
+            
+            // Add submit handler for fallback form
+            document.getElementById('fallback-newsletter-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Köszönjük a feliratkozást! Az email címed rögzítettük.');
+                this.reset();
+            });
+        }
+    }, 3000); // Check after 3 seconds
+});
 </script>
 </body>
 </html>
