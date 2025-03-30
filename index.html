@@ -521,7 +521,51 @@
                     showSlide(index);
                 });
             });
+
+            // ADD THE NEW CODE RIGHT HERE
+        // Thank you page functionality
+        const mainContentSections = document.querySelectorAll('section:not(#thank-you-section)');
+        const thankYouSection = document.getElementById('thank-you-section');
+        const returnButton = document.getElementById('return-to-main');
+        const signButtons = document.querySelectorAll('#sign-button, #sign-button-bottom, #hero-sign-button');
+        
+        signButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Open the petition in a new tab
+                window.open('https://www.change.org/p/lej%C3%A1rt-az-id%C5%91-v%C3%A1ltsuk-le-az-elavult-ketreces-tart%C3%A1st', '_blank');
+                
+                // Hide all other sections
+                mainContentSections.forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show thank you section
+                thankYouSection.style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
         });
+        
+        // Return button functionality
+        returnButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Hide thank you section
+            thankYouSection.style.display = 'none';
+            
+            // Show all other sections
+            mainContentSections.forEach(section => {
+                section.style.display = 'block';
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+        
+    });
     </script>
 
     <!-- Thank You Section (initially hidden) -->
