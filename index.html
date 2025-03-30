@@ -293,6 +293,26 @@
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+.newsletter-button-container {
+    margin-top: 20px;
+}
+
+#newsletter-subscribe-button {
+    background-color: #fa8d45fd;
+    color: #333;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#newsletter-subscribe-button:hover {
+    background-color: #333;
+    color: white;
+}
         
         @media (max-width: 768px) {
             .grid {
@@ -605,6 +625,17 @@ returnButton.addEventListener('click', function(e) {
     // Scroll to top
     window.scrollTo(0, 0);
 });
+
+const subscribeButton = document.getElementById('newsletter-subscribe-button');
+        if (subscribeButton) {
+            subscribeButton.addEventListener('click', function() {
+                // This will trigger the submission of the MailerLite form
+                const mlForm = document.querySelector('.ml-form-embed form');
+                if (mlForm) {
+                    mlForm.submit();
+                }
+            });
+        }
         
     });
     </script>
@@ -623,6 +654,11 @@ returnButton.addEventListener('click', function(e) {
             <div class="ml-form-embed"
                  data-account="ACCOUNT_ID_HERE" 
                  data-form="FORM_ID_HERE">
+            </div>
+
+            <!-- Additional Subscribe Button (in case MailerLite form doesn't include one) -->
+            <div class="newsletter-button-container">
+                <button type="button" id="newsletter-subscribe-button" class="button">Subscribe to Newsletter</button>
             </div>
             
             <div class="privacy-notice">
