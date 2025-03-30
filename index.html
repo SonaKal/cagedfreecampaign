@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stop Caged Eggs Petition</title>
+    <title>Petíció a szabad tyúkokért</title>
     <link rel="preconnect" href="https://raw.githubusercontent.com">
     <style>
         /* Import Montserrat font from Google Fonts */
@@ -523,5 +523,39 @@
             });
         });
     </script>
+
+    <!-- Thank You Section (initially hidden) -->
+<section id="thank-you-section" style="display: none;">
+    <h2>Thank You for Signing the Petition!</h2>
+    <p>Your support helps us make a real difference in the lives of hens. Together, we can put an end to caged egg farming.</p>
+    
+    <div class="newsletter-signup">
+        <h3>Stay Updated</h3>
+        <p>Join our newsletter to receive updates on our campaign progress and how you can help further.</p>
+        
+        <!-- MailerLite Signup Form -->
+        <div class="ml-form-embed"
+             data-account="ACCOUNT_ID_HERE" 
+             data-form="FORM_ID_HERE">
+        </div>
+        
+        <div class="privacy-notice">
+            <p>We respect your privacy. Your information will never be shared with third parties without your permission. You can unsubscribe at any time.</p>
+        </div>
+    </div>
+    
+    <div class="cta">
+        <a href="#" id="return-to-main" class="button">Return to Main Content</a>
+    </div>
+</section>
+
+<!-- MailerLite JavaScript -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', 'ACCOUNT_ID_HERE');
+</script>
 </body>
 </html>
