@@ -634,18 +634,6 @@ returnButton.addEventListener('click', function(e) {
     // Scroll to top
     window.scrollTo(0, 0);
 });
-
-const subscribeButton = document.getElementById('newsletter-subscribe-button');
-        if (subscribeButton) {
-            subscribeButton.addEventListener('click', function() {
-                // This will trigger the submission of the MailerLite form
-                const mlForm = document.querySelector('.ml-form-embed form');
-                if (mlForm) {
-                    mlForm.submit();
-                }
-            });
-        }
-        
     });
     </script>
 
