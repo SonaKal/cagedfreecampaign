@@ -251,6 +251,48 @@
             height: 450px; 
             object-fit: cover;
         }
+
+        .thank-you-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.newsletter-signup {
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#thank-you-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #ff6600;
+}
+
+#thank-you-section h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #ff6600;
+}
+
+#thank-you-section .privacy-notice {
+    font-size: 12px;
+    color: #777;
+    margin-top: 20px;
+}
+
+#thank-you-section .center-image {
+    margin: 30px auto;
+}
+
+#thank-you-section .center-image img {
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
         
         @media (max-width: 768px) {
             .grid {
@@ -522,74 +564,80 @@
                 });
             });
 
-            // ADD THE NEW CODE RIGHT HERE
-        // Thank you page functionality
-        const mainContentSections = document.querySelectorAll('section:not(#thank-you-section)');
-        const thankYouSection = document.getElementById('thank-you-section');
-        const returnButton = document.getElementById('return-to-main');
-        const signButtons = document.querySelectorAll('#sign-button, #sign-button-bottom, #hero-sign-button');
+            // Thank you page functionality
+const mainContent = document.querySelectorAll('body > *:not(#thank-you-section):not(script)');
+const thankYouSection = document.getElementById('thank-you-section');
+const returnButton = document.getElementById('return-to-main');
+const signButtons = document.querySelectorAll('#sign-button, #sign-button-bottom, #hero-sign-button');
+
+signButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
         
-        signButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Open the petition in a new tab
-                window.open('https://www.change.org/p/lej%C3%A1rt-az-id%C5%91-v%C3%A1ltsuk-le-az-elavult-ketreces-tart%C3%A1st', '_blank');
-                
-                // Hide all other sections
-                mainContentSections.forEach(section => {
-                    section.style.display = 'none';
-                });
-                
-                // Show thank you section
-                thankYouSection.style.display = 'block';
-                
-                // Scroll to top
-                window.scrollTo(0, 0);
-            });
+        // Open the petition in a new tab
+        window.open('https://www.change.org/p/lej%C3%A1rt-az-id%C5%91-v%C3%A1ltsuk-le-az-elavult-ketreces-tart%C3%A1st', '_blank');
+        
+        // Hide all other content
+        mainContent.forEach(element => {
+            element.style.display = 'none';
         });
         
-        // Return button functionality
-        returnButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Hide thank you section
-            thankYouSection.style.display = 'none';
-            
-            // Show all other sections
-            mainContentSections.forEach(section => {
-                section.style.display = 'block';
-            });
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        });
+        // Show thank you section
+        thankYouSection.style.display = 'block';
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+    });
+});
+
+// Return button functionality
+returnButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Hide thank you section
+    thankYouSection.style.display = 'none';
+    
+    // Show all other content
+    mainContent.forEach(element => {
+        element.style.display = '';
+    });
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+});
         
     });
     </script>
 
     <!-- Thank You Section (initially hidden) -->
 <section id="thank-you-section" style="display: none;">
-    <h2>Thank You for Signing the Petition!</h2>
-    <p>Your support helps us make a real difference in the lives of hens. Together, we can put an end to caged egg farming.</p>
-    
-    <div class="newsletter-signup">
-        <h3>Stay Updated</h3>
-        <p>Join our newsletter to receive updates on our campaign progress and how you can help further.</p>
+    <div class="thank-you-container">
+        <h2>Köszönjük, hogy aláírtad a petíciót!</h2>
+        <p>A támogatásoddal valódi különbséget tehetünk a tyúkok életében. Együtt véget vethetünk a ketreces tartásnak.</p>
         
-        <!-- MailerLite Signup Form -->
-        <div class="ml-form-embed"
-             data-account="ACCOUNT_ID_HERE" 
-             data-form="FORM_ID_HERE">
+        <div class="newsletter-signup">
+            <h3>Maradj velünk kapcsolatban</h3>
+            <p>Iratkozz fel hírlevelünkre, hogy tájékoztassunk a kampány fejleményeiről és arról, hogyan segíthetsz tovább.</p>
+            
+            <!-- MailerLite Signup Form -->
+            <div class="ml-form-embed"
+                 data-account="ACCOUNT_ID_HERE" 
+                 data-form="FORM_ID_HERE">
+            </div>
+            
+            <div class="privacy-notice">
+                <p>Tiszteletben tartjuk a magánéletedet. Adataidat sosem osztjuk meg harmadik féllel az engedélyed nélkül. Bármikor leiratkozhatsz.</p>
+            </div>
         </div>
         
-        <div class="privacy-notice">
-            <p>We respect your privacy. Your information will never be shared with third parties without your permission. You can unsubscribe at any time.</p>
+        <div class="center-image">
+            <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/website_magda_the_hen.jpg" 
+                 alt="Free-range hen in a meadow" loading="lazy" decoding="async" width="800" height="600">
         </div>
-    </div>
-    
-    <div class="cta">
-        <a href="#" id="return-to-main" class="button">Return to Main Content</a>
+        
+        <div class="cta">
+            <a href="#" id="return-to-main" class="button">Vissza a főoldalra</a>
+        </div>
     </div>
 </section>
 
