@@ -346,6 +346,72 @@
     background-color: #333;
     color: white;
 }
+
+<style>
+/* MailerLite form styling */
+.ml-form-embedWrapper {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ml-form-embedBody {
+    padding: 20px;
+    border-radius: 4px;
+    background: #f8f8f8;
+}
+
+.ml-form-fieldRow {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.ml-form-checkboxRow {
+    margin: 20px 0;
+}
+
+.checkbox {
+    display: flex;
+    align-items: flex-start;
+}
+
+.checkbox input {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.ml-form-embedSubmit .primary {
+    background-color: #fa8d45fd;
+    color: #333;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+}
+
+.ml-form-embedSubmit .primary:hover {
+    background-color: #333;
+    color: white;
+}
+
+.ml-form-successBody {
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-radius: 4px;
+    text-align: center;
+}
         
         @media (max-width: 768px) {
             .grid {
@@ -685,26 +751,68 @@ returnButton.addEventListener('click', function(e) {
     <div class="thank-you-container">
         <h2>Köszönjük a támogatásod!</h2>
         
-        <div class="newsletter-signup">
-            <p>Nap mint nap tyúkok milliói szenvednek apró ketrecekbe zárva a tojásiparban. <strong>Az aláírásoddal hatalmas lépést tettél, hogy ezt megváltoztassuk!</strong> Ha pedig megosztod ezt az üzenetet és a petíciónkat, azzal ennél is többet tehetsz.</p>
+        <!-- Replace your current MailerLite form section with this complete implementation -->
+<div class="newsletter-signup">
+    <p>Nap mint nap tyúkok milliói szenvednek apró ketrecekbe zárva a tojásiparban. <strong>Az aláírásoddal hatalmas lépést tettél, hogy ezt megváltoztassuk!</strong> Ha pedig megosztod ezt az üzenetet és a petíciónkat, azzal ennél is többet tehetsz.</p>
             
-            <div class="ml-form-embed" data-account="1353741" data-form="zqaCDk"></div>
+            <!-- Complete MailerLite implementation based on the working code -->
+    <div class="ml-form-align-center">
+        <div class="ml-form-embedWrapper embedForm">
+            <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                <div class="ml-form-embedContent">
+                    <h3>Maradj kapcsolatban</h3>
+                </div>
+                
+                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1353741/forms/150030748382922422/subscribe" data-code="" method="post" target="_blank">
+                    <div class="ml-form-formContent">
+                        <div class="ml-form-fieldRow">
+                            <div class="ml-field-group ml-field-name">
+                                <input aria-label="name" type="text" class="form-control" name="fields[name]" placeholder="Név" autocomplete="given-name">
+                            </div>
+                        </div>
+                        <div class="ml-form-fieldRow ml-last-item">
+                            <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="Email" autocomplete="email">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ml-form-checkboxRow ml-validate-required">
+                        <label class="checkbox">
+                            <input type="checkbox">
+                            <div class="label-description">
+                                <p>Kijelentem, hogy elolvastam és elfogadom az <a href="https://docs.google.com/document/d/1MM70g8unvYdoN0eH6LJFjEolcWvPeZ3H/edit?usp=drive_link&ouid=104031341316936375930&rtpof=true&sd=true" target="_blank">adatvédelmi szabályzatot</a>.</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <input type="hidden" name="ml-submit" value="1">
+                    
+                    <div class="ml-form-embedSubmit">
+                        <button type="submit" class="primary">Feliratkozás</button>
+                        <button disabled="disabled" style="display: none;" type="button" class="loading">
+                            <div class="ml-form-embedSubmitLoad"></div>
+                            <span class="sr-only">Betöltés...</span>
+                        </button>
+                    </div>
+                    
+                    <input type="hidden" name="anticsrf" value="true">
+                </form>
+            </div>
             
-            <div class="privacy-notice">
-                <p>A személyes adataidat bizalmasan kezeljük. Az információidat sosem adjuk ki harmadik félnek az engedélyed nélkül. Bármikor leiratkozhatsz.</p>
+            <div class="ml-form-successBody row-success" style="display: none">
+                <div class="ml-form-successContent">
+                    <h4>Köszönjük!</h4>
+                    <p>Sikeresen feliratkoztál a levelezőlistánkra.</p>
+                </div>
             </div>
         </div>
-        
-        <div class="center-image">
-            <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/funny%20chicken.jpg" 
-                 alt="Thank you chicken" loading="lazy" decoding="async" width="800" height="600">
-        </div>
-        
-        <div class="cta">
-            <a href="#" id="return-to-main" class="button">Vissza a főoldalra</a>
-        </div>
     </div>
-</section>
+    
+    <div class="privacy-notice">
+        <p>A személyes adataidat bizalmasan kezeljük. Az információidat sosem adjuk ki harmadik félnek az engedélyed nélkül. Bármikor leiratkozhatsz.</p>
+    </div>
+</div>
 
 <!-- MailerLite Universal -->
 <script>
