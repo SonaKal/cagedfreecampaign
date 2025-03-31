@@ -822,6 +822,34 @@ returnButton.addEventListener('click', function(e) {
     <a href="#" id="return-to-main" class="button">Vissza a főoldalra</a>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mlForm = document.querySelector('.ml-block-form');
+        if (mlForm) {
+            mlForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.querySelector('.ml-form-embedBody').style.display = 'none';
+                        document.querySelector('.ml-form-successBody').style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Fallback for error case
+                    alert('Köszönjük a feliratkozást!');
+                });
+            });
+        }
+    });
+    </script>
+
 <!-- MailerLite Universal -->
 <script>
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
