@@ -797,6 +797,40 @@ returnButton.addEventListener('click', function(e) {
         <p>&copy; Homo Animalis Nonprofit Kft., 2025</p>
     </div>
 </footer>
+<script>
+    // Footer newsletter form submission handling
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle all MailerLite forms on the page
+        const mlForms = document.querySelectorAll('.ml-block-form');
+        
+        mlForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(this);
+                const formParent = this.closest('.ml-form-embedBody');
+                const successSection = formParent.nextElementSibling;
+                
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        formParent.style.display = 'none';
+                        successSection.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Show success message anyway as fallback
+                    formParent.style.display = 'none';
+                    successSection.style.display = 'block';
+                });
+            });
+        });
+    });
+    </script>
 
     <!-- Thank You Section (initially hidden) -->
 <section id="thank-you-section" style="display: none;">
