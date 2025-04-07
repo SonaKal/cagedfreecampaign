@@ -508,6 +508,17 @@
     </style>
 </head>
 <body>
+    <body>
+        <!-- Cookie Notification Banner -->
+        <div id="cookie-notice" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgba(51, 51, 51, 0.95); color: white; padding: 15px; text-align: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+                <p style="margin: 10px 20px; font-size: 16px;">Ez a weboldal sütiket használ a felhasználói élmény javítása érdekében. Az oldal használatával elfogadod a sütikezelést.</p>
+                <div style="margin: 10px;">
+                    <button id="accept-cookies" style="background-color: #fa8d45fd; color: #333; border: none; padding: 8px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-right: 10px;">Elfogadom</button>
+                    <a href="#" id="cookie-policy-link" style="color: #fa8d45fd; text-decoration: underline; font-size: 14px;">Süti szabályzat</a>
+                </div>
+            </div>
+        </div>
     <div class="hero">
         <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/website_3(1).jpg" alt="Caged hen in poor conditions" width="1200" height="800" decoding="async">
         <div class="hero-text">Lejárt az idő: váltsuk le az elavult ketreces tartást!</div>
@@ -981,43 +992,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000); // Check after 5 seconds
 });
 </script>
-<!-- Cookie Notification Banner -->
-<div id="cookie-notice" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgba(51, 51, 51, 0.95); color: white; padding: 15px; text-align: center; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.2);">
-    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
-        <p style="margin: 10px 20px; font-size: 16px;">Ez a weboldal sütiket használ a felhasználói élmény javítása érdekében. Az oldal használatával elfogadod a sütikezelést.</p>
-        <div style="margin: 10px;">
-            <button id="accept-cookies" style="background-color: #fa8d45fd; color: #333; border: none; padding: 8px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-right: 10px;">Elfogadom</button>
-            <a href="#" id="cookie-policy-link" style="color: #fa8d45fd; text-decoration: underline; font-size: 14px;">Süti szabályzat</a>
-        </div>
-    </div>
-</div>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if user has already accepted cookies
-    const cookiesAccepted = localStorage.getItem('cookiesAccepted');
-    
-    if (!cookiesAccepted) {
-        // Show the cookie notice
-        document.getElementById('cookie-notice').style.display = 'block';
-    }
-    
-    // Handle the accept button click
-    document.getElementById('accept-cookies').addEventListener('click', function() {
-        // Save to localStorage
-        localStorage.setItem('cookiesAccepted', 'true');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize the cookie notice
+        initCookieNotice();
         
-        // Hide the notice
-        document.getElementById('cookie-notice').style.display = 'none';
+        // Initialize carousel
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+    
+        // Set first slide as active
+        slides[0].classList.add('active');
+    
+        // Function to show a specific slide
+        function showSlide(n) {
+            // Your existing carousel code...
+        }
+        
+        // Your other event handlers and functionality...
     });
     
-    // Cookie policy link (replace with actual link)
-    document.getElementById('cookie-policy-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('Itt találod a süti szabályzatunkat. (Helyettesítsd ezt a linket a valódi süti szabályzat URL-jével)');
-        // window.location.href = '/cookie-policy.html'; // Uncomment and update when you have a real page
-    });
-});
-</script>
+    // Cookie notification function
+    function initCookieNotice() {
+        // Check if user has already accepted cookies
+        const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+        const cookieNotice = document.getElementById('cookie-notice');
+        
+        if (!cookiesAccepted && cookieNotice) {
+            // Show the cookie notice
+            cookieNotice.style.display = 'block';
+            
+            // Event handlers for buttons
+            const acceptButton = document.getElementById('accept-cookies');
+            if (acceptButton) {
+                acceptButton.addEventListener('click', function() {
+                    localStorage.setItem('cookiesAccepted', 'true');
+                    cookieNotice.style.display = 'none';
+                });
+            }
+            
+            // Policy link handler
+            const policyLink = document.getElementById('cookie-policy-link');
+            if (policyLink) {
+                policyLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Itt találod a süti szabályzatunkat. (Helyettesítsd ezt a linket a valódi süti szabályzat URL-jével)');
+                });
+            }
+        }
+    }
+    </script>
 </body>
 </html>
