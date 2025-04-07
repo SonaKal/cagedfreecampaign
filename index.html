@@ -739,38 +739,59 @@ returnButton.addEventListener('click', function(e) {
 
 <footer class="footer">
     <div class="footer-content">
-        // Footer newsletter form submission handling
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle all MailerLite forms on the page
-    const mlForms = document.querySelectorAll('.ml-block-form');
-    
-    mlForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const formParent = this.closest('.ml-form-embedBody');
-            const successSection = formParent.nextElementSibling;
+        <!-- Newsletter signup form - same as thank you page -->
+<div class="ml-form-align-center">
+    <div class="ml-form-embedWrapper embedForm">
+        <div class="ml-form-embedBody ml-form-embedBodyDefault row-form" style="background-color: #444;">
+            <div class="ml-form-embedContent">
+                <h3 style="color: white;">Maradj kapcsolatban</h3>
+            </div>
             
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    formParent.style.display = 'none';
-                    successSection.style.display = 'block';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Show success message anyway as fallback
-                formParent.style.display = 'none';
-                successSection.style.display = 'block';
-            });
-        });
-    });
-});
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1353741/forms/150030748382922422/subscribe" data-code="" method="post" >
+                <div class="ml-form-formContent">
+                    <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-name">
+                            <input aria-label="name" type="text" class="form-control" name="fields[name]" placeholder="Név" autocomplete="given-name">
+                        </div>
+                    </div>
+                    <div class="ml-form-fieldRow ml-last-item">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                            <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="Email" autocomplete="email">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ml-form-checkboxRow ml-validate-required">
+                    <label class="checkbox">
+                        <input type="checkbox">
+                        <div class="label-description">
+                            <p style="color: white;">Kijelentem, hogy elolvastam és elfogadom az <a href="https://docs.google.com/document/d/1MM70g8unvYdoN0eH6LJFjEolcWvPeZ3H/edit?usp=drive_link&ouid=104031341316936375930&rtpof=true&sd=true" target="_blank" style="color: #fa8d45fd;">adatvédelmi szabályzatot</a>.</p>
+                        </div>
+                    </label>
+                </div>
+                
+                <input type="hidden" name="ml-submit" value="1">
+                
+                <div class="ml-form-embedSubmit">
+                    <button type="submit" class="primary">Feliratkozás</button>
+                    <button disabled="disabled" style="display: none;" type="button" class="loading">
+                        <div class="ml-form-embedSubmitLoad"></div>
+                        <span class="sr-only">Betöltés...</span>
+                    </button>
+                </div>
+                
+                <input type="hidden" name="anticsrf" value="true">
+            </form>
+        </div>
+        
+        <div class="ml-form-successBody row-success" style="display: none; background-color: #444;">
+            <div class="ml-form-successContent">
+                <h4 style="color: white;">Köszönjük!</h4>
+                <p style="color: white;">Sikeresen feliratkoztál a levelezőlistánkra.</p>
+            </div>
+        </div>
+    </div>
+</div>
         <p><a href="mailto:info@farmallatvedelem.hu">info@farmallatvedelem.hu</a></p>
         <p><a href="https://farmallatvedelem.hu">www.farmallatvedelem.hu</a></p>
         <p>&copy; Homo Animalis Nonprofit Kft., 2025</p>
