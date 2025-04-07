@@ -1039,7 +1039,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (policyLink) {
                 policyLink.addEventListener('click', function(e) {
                     e.preventDefault();
-                    alert('Itt találod a süti szabályzatunkat. (Helyettesítsd ezt a linket a valódi süti szabályzat URL-jével)');
+                    window.location.href = 'cookie-policy.html';
                 });
             }
         }
