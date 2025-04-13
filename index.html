@@ -452,6 +452,18 @@
             iframe {
                 height: 400px !important;
             }
+
+            .video-container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+
+    section {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
             
             .carousel-slide img {
                 height: 450px;
@@ -462,7 +474,6 @@
                 max-height: 50%;
                 background-color: rgba(80, 80, 80, 0.5);
             }
-        }
 
         @media (max-width: 480px) {
             .hero-text {
@@ -497,6 +508,11 @@
             .grid-item img {
                 height: 300px;
             }
+
+            .video-container {
+        margin-bottom: 15px;
+    }
+}
             
             .carousel-slide img, 
             iframe {
@@ -512,7 +528,6 @@
                 max-height: 50%;
                 background-color: rgba(80, 80, 80, 0.5);
             }
-        }
     </style>
 </head>
 <body>
@@ -547,15 +562,13 @@
     
     <section>
         <h2>Az igazság a ketreces tartásról</h2>
-        <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
-            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5px;">
+            <!-- Video container with improved mobile styles -->
+            <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 20px; max-width: 100%;">
                 <iframe 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                    width="560" 
-                    height="315" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
                     src="https://www.youtube.com/embed/1S7PkCW1G9Q?si=Len5Zc6Y-3Iochnk" 
                     title="YouTube video player" 
-                    frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin" 
                     allowfullscreen>
