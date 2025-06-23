@@ -542,7 +542,6 @@ section p, section h2, section h3 {
     <div class="hero">
         <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/website_3(1).jpg" alt="Caged hen in poor conditions" width="1200" height="800" decoding="async">
         <div class="hero-text">Lejárt az idő: váltsuk le az elavult ketreces tartást!</div>
-        <a href="https://rebrand.ly/6xzsyaj" class="hero-button" id="hero-sign-button" target="_blank">Írd alá a petíciót</a>
     </div>
     
     <section>
@@ -552,9 +551,6 @@ section p, section h2, section h3 {
 
         <p>A válasz egyszerű: amíg nem tudunk róla, nem tudunk tenni ellene. Győzzük le a tudatlanságot és juttassuk el ezt a felvételt az ország minden szegletébe, valamint nyilvánítsuk ki aláírásunkkal közösen: <strong>nem támogatjuk a tyúkok ketrecbe zárását!</strong> </p>
         
-        <div class="cta">
-            <a href="https://rebrand.ly/6xzsyaj" class="button" id="sign-button" target="_blank">Írd alá a petíciót</a>
-        </div>
     </section>
     
     <section>
@@ -649,19 +645,12 @@ section p, section h2, section h3 {
 
             <p>Együtt legyőzzük a tudatlanságot és <strong>kiszabadítjuk a tyúkokat!</strong></p>
         </div>
-
-        <div class="cta">
-            <h2>Írd alá a petíciót!</h2>
-        </div>
         
         <div class="center-image">
             <img src="https://raw.githubusercontent.com/SonaKal/cagedfreecampaign/main/images/website_magda_the_hen.jpg" 
                  alt="Free-range hen in a meadow" loading="lazy" decoding="async">
         </div>
         
-        <div class="cta">
-            <a href="https://rebrand.ly/6xzsyaj" class="button" id="sign-button-bottom" target="_blank">Írd alá a petíciót</a>
-        </div>
     </section>
 
     <script>
@@ -720,48 +709,6 @@ section p, section h2, section h3 {
                     showSlide(index);
                 });
             });
-
-            // Thank you page functionality
-const mainContent = document.querySelectorAll('body > *:not(#thank-you-section):not(script)');
-const thankYouSection = document.getElementById('thank-you-section');
-const returnButton = document.getElementById('return-to-main');
-const signButtons = document.querySelectorAll('#sign-button, #sign-button-bottom, #hero-sign-button');
-
-signButtons.forEach(button => {
-    button.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Open the petition in a new tab
-        window.open('https://rebrand.ly/6xzsyaj', '_blank');
-        
-        // Hide all other content
-        mainContent.forEach(element => {
-            element.style.display = 'none';
-        });
-        
-        // Show thank you section
-        thankYouSection.style.display = 'block';
-        
-        // Scroll to top
-        window.scrollTo(0, 0);
-    });
-});
-
-// Return button functionality
-returnButton.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    // Hide thank you section
-    thankYouSection.style.display = 'none';
-    
-    // Show all other content
-    mainContent.forEach(element => {
-        element.style.display = '';
-    });
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
-});
     });
     </script>
 
@@ -827,40 +774,6 @@ returnButton.addEventListener('click', function(e) {
         <p>&copy; Homo Animalis Nonprofit Kft., 2025</p>
     </div>
 </footer>
-<script>
-    // Footer newsletter form submission handling
-    document.addEventListener('DOMContentLoaded', function() {
-        // Handle all MailerLite forms on the page
-        const mlForms = document.querySelectorAll('.ml-block-form');
-        
-        mlForms.forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const formData = new FormData(this);
-                const formParent = this.closest('.ml-form-embedBody');
-                const successSection = formParent.nextElementSibling;
-                
-                fetch(this.action, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        formParent.style.display = 'none';
-                        successSection.style.display = 'block';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Show success message anyway as fallback
-                    formParent.style.display = 'none';
-                    successSection.style.display = 'block';
-                });
-            });
-        });
-    });
-    </script>
 
     <!-- Thank You Section (initially hidden) -->
 <section id="thank-you-section" style="display: none;">
@@ -1061,6 +974,74 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
+    // Handle footer newsletter form to show thank you page
+document.addEventListener('DOMContentLoaded', function() {
+    // Find the footer newsletter form
+    const footerNewsletterForm = document.querySelector('footer .ml-block-form');
+    
+    if (footerNewsletterForm) {
+        footerNewsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            // Submit the form to MailerLite
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show thank you page regardless of response
+                showThankYouPage();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show thank you page anyway as fallback
+                showThankYouPage();
+            });
+        });
+    }
+
+    // Function to show thank you page
+    function showThankYouPage() {
+        const mainContent = document.querySelectorAll('body > *:not(#thank-you-section):not(script)');
+        const thankYouSection = document.getElementById('thank-you-section');
+        
+        // Hide all other content
+        mainContent.forEach(element => {
+            element.style.display = 'none';
+        });
+        
+        // Show thank you section
+        thankYouSection.style.display = 'block';
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+
+    // Return button functionality for thank you page
+    const returnButton = document.getElementById('return-to-main');
+    if (returnButton) {
+        returnButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const mainContent = document.querySelectorAll('body > *:not(#thank-you-section):not(script)');
+            const thankYouSection = document.getElementById('thank-you-section');
+            
+            // Hide thank you section
+            thankYouSection.style.display = 'none';
+            
+            // Show all other content
+            mainContent.forEach(element => {
+                element.style.display = '';
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+    }
+});
     </script>
 </body>
 </html>
